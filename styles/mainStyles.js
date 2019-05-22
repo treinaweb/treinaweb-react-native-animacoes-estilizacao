@@ -17,7 +17,7 @@ const myOSStyle = Platform.select({
 const styles = StyleSheet.create({
     myText: {
         fontSize: 30,
-        fontFamily: 'Angelina',
+        fontFamily: 'angelina',
         //color: colors.blue,
         //...StyleSheet.absoluteFill,
         ...myOSStyle

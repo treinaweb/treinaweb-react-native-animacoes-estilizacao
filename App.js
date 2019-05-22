@@ -1,21 +1,14 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Button} from 'react-native';
+
+import myStyles, {colors} from './styles/mainStyles';
 
 export default class App extends Component{
-  state = {
-    color: 'red'
-  }
-
-  componentDidMount(){
-    setTimeout(() => {
-      this.setState({color: 'green'});
-    }, 2000)
-  }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.myText} >Welcome to React Native!</Text>
-        <Text style={{color: this.state.color}} >TreinaWeb</Text>
+        <Text style={[myStyles.myText, {fontSize: 30}]} >Welcome to React Native!</Text>
+        <Button title="CLICK ME" color={colors.red} />
       </View>
     );
   }
@@ -27,8 +20,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  myText: {
-    fontSize: 20
   }
 });

@@ -1,18 +1,24 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button, TouchableOpacity, ImageBackground} from 'react-native';
 
+import LinearGradient from 'react-native-linear-gradient';
+
 import myStyles, {colors} from './styles/mainStyles';
 
 export default class App extends Component{
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity>
-          <ImageBackground style={{width: 300, height: 200}} source={{uri: 'https://www.lacala.com/wp-content/uploads/2018/08/campo-America-Tee1.jpg'}} >
-            <Text style={[myStyles.myText]} >Welcome to React Native!</Text>
-          </ImageBackground>
-        </TouchableOpacity>
-        
+            
+        <LinearGradient 
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          locations={[0, .7, .8]}
+          style={myStyles.linearGradient} 
+          colors={['red', 'green', 'blue']} >
+          <Text style={[myStyles.myText]} >Welcome to React Native!</Text>
+        </LinearGradient>
+
         <Button title="CLICK ME" color={colors.red} />
       </View>
     );

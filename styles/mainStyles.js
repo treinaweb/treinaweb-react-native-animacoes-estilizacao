@@ -14,6 +14,8 @@ const styles = StyleSheet.create({
             //{scale: 1},
             //{scaleX: 2},
             //{scaleY: 2},
+            //{translateX: 100},
+            //{translateY: 100}
         ]
     }
 });

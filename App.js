@@ -7,13 +7,31 @@ import myStyles, {colors} from './styles/mainStyles';
 
 export default class App extends Component{
 
+  state = {
+    size: 20
+  }
+
+  componentDidMount(){
+    this.setState({size: this.getSize()});
+
+    Dimensions.addEventListener('change', () => {
+      this.setState({size: this.getSize()});
+    })
+  }
+
+  getSize = () => {
+    const {width, height} = Dimensions.get('window');
+    if(height > width){
+      return (Dimensions.get('window').width/3) - 8;
+    }
+    return (Dimensions.get('window').width/7) - 8;
+  }
+
 
 
   render() {
 
-    const {width} = Dimensions.get('window'),
-      size = (width / 3) - 8;
-
+    const {size} = this.state;
 
     return (
       <SafeAreaView style={styles.container}>

@@ -15,7 +15,10 @@ const styles = StyleSheet.create({
             //{scaleX: 2},
             //{scaleY: 2},
             //{translateX: 100},
-            //{translateY: 100}
+            //{translateY: 100},
+            //{rotateX: '45deg'},
+            //{rotateY: '45deg'},
+            //{rotateZ: '90deg'},
         ]
     }
 });

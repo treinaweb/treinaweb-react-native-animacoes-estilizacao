@@ -23,19 +23,21 @@ export default class App extends Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
   viewContainer: {
     backgroundColor: colors.yellow,
-    flex: .5,
+    flex: 1,
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   text: {
-    width: 150,
-    height: 150,
+    width: 50,
+    height: 50,
     margin: 5,
     backgroundColor: colors.blue,
     color: 'white'

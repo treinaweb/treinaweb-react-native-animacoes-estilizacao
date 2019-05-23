@@ -9,15 +9,8 @@ export default class App extends Component{
   render() {
     return (
       <View style={styles.container}>
-            
-        <LinearGradient 
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 0}}
-          locations={[0, .7, .8]}
-          style={myStyles.linearGradient} 
-          colors={['red', 'green', 'blue']} >
-          <Text style={[myStyles.myText]} >Welcome to React Native!</Text>
-        </LinearGradient>
+        
+        <Text style={[myStyles.myText]} >Welcome to React Native!</Text>
 
         <Button title="CLICK ME" color={colors.red} />
       </View>

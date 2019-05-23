@@ -9,12 +9,12 @@ export const colors = {
 const styles = StyleSheet.create({
     myText: {
         fontSize: 30,
-        color: 'white'
-        //backgroundColor: colors.yellow,
-    },
-    linearGradient: {
-        padding: 15,
-        height: 300
+        backgroundColor: colors.yellow,
+        transform: [
+            //{scale: 1},
+            //{scaleX: 2},
+            //{scaleY: 2},
+        ]
     }
 });
   

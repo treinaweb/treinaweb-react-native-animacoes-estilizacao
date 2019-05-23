@@ -19,6 +19,8 @@ const styles = StyleSheet.create({
             //{rotateX: '45deg'},
             //{rotateY: '45deg'},
             //{rotateZ: '90deg'},
+            //{skewX: '-40deg'},
+            //{skewY: '50deg'}
         ]
     }
 });

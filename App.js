@@ -1,32 +1,30 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button, TouchableOpacity, ImageBackground, SafeAreaView, Dimensions} from 'react-native';
-
-import LinearGradient from 'react-native-linear-gradient';
-
+import {StyleSheet, Text, View, SafeAreaView, Animated} from 'react-native';
 import myStyles, {colors} from './styles/mainStyles';
 
 export default class App extends Component{
 
   state = {
-    size: 20
+  }
+
+  constructor(props){
+    super(props);
+    this.x = new Animated.Value(0);
   }
 
   componentDidMount(){
-    this.setState({size: this.getSize()});
-
-    Dimensions.addEventListener('change', () => {
-      this.setState({size: this.getSize()});
-    })
   }
 
-  getSize = () => {
-    const {width, height} = Dimensions.get('window');
-    if(height > width){
-      return (Dimensions.get('window').width/3) - 8;
-    }
-    return (Dimensions.get('window').width/7) - 8;
-  }
+  onPress = () => {
+    this.x.setValue(0);
 
+    const myAnimation = Animated.timing(this.x, {
+      toValue: 100,
+      duration: 1000
+    });
+
+    myAnimation.start();
+  }
 
 
   render() {
@@ -35,15 +33,10 @@ export default class App extends Component{
 
     return (
       <SafeAreaView style={styles.container}>
-        
-        <View style={styles.viewContainer} >
-          <Text style={[styles.text, {width: size, height: size}]} >ABC</Text>
-          <Text style={[styles.text, {width: size, height: size}]} >DEF</Text>
-          <Text style={[styles.text, {width: size, height: size}]} >GHI</Text>
-          <Text style={[styles.text, {width: size, height: size}]} >ABC</Text>
-          <Text style={[styles.text, {width: size, height: size}]} >DEF</Text>
-          <Text style={[styles.text, {width: size, height: size}]} >GHI</Text>
-        </View>
+        <Animated.Text onPress={this.onPress}
+          style={[styles.viewContainer, {left: this.x}]} >
+              TreinaWeb
+            </Animated.Text>
       </SafeAreaView>
     );
   }
@@ -58,18 +51,7 @@ const styles = StyleSheet.create({
   },
   viewContainer: {
     backgroundColor: colors.yellow,
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    width: '100%'
-  },
-  text: {
-    width: 50,
-    height: 50,
-    backgroundColor: colors.blue,
-    color: 'white',
-    marginBottom: 10
+    padding: 10,
+    fontSize: 20
   }
 });

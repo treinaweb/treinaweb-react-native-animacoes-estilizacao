@@ -20,7 +20,7 @@ export default class App extends Component{
 
     const myAnimation = Animated.timing(this.position, {
       toValue: 1,
-      duration: 2000
+      duration: 2000,
     });
 
     myAnimation.start();
@@ -32,14 +32,14 @@ export default class App extends Component{
     const {size} = this.state;
 
     const myLeftAnimation = this.position.interpolate({
-      inputRange: [0, .20, .70, .90, 1],
-      outputRange: [0, 100, 50, 80, 0]
+      inputRange: [0, .5, 1],
+      outputRange: ['0deg', '180deg', '0deg']
     })
 
     return (
       <SafeAreaView style={styles.container}>
         <Animated.Text onPress={this.onPress}
-          style={[styles.viewContainer, {left: myLeftAnimation}]} >
+          style={[styles.viewContainer, {transform: [{rotate: myLeftAnimation}]}]} >
               TreinaWeb
             </Animated.Text>
       </SafeAreaView>

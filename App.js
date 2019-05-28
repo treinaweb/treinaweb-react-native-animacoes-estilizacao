@@ -16,14 +16,20 @@ export default class App extends Component{
   }
 
   onPress = () => {
-    this.x.setValue(0);
+    //this.x.setValue(0);
 
     const myAnimation = Animated.timing(this.x, {
       toValue: 100,
-      duration: 1000
+      duration: 2000
     });
 
     myAnimation.start();
+
+    setTimeout(() => {
+      //this.x.stopAnimation(() => {})
+      //myAnimation.stop();
+      this.x.resetAnimation(this.onPress);
+    }, 1000)
   }
 
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, SafeAreaView, Animated} from 'react-native';
+import {StyleSheet, Text, View, SafeAreaView, Animated, Easing} from 'react-native';
 import myStyles, {colors} from './styles/mainStyles';
 
 export default class App extends Component{
@@ -9,18 +9,19 @@ export default class App extends Component{
 
   constructor(props){
     super(props);
-    this.position = new Animated.ValueXY({x: 0, y: 0});
+    this.position = new Animated.Value(0);
   }
 
   componentDidMount(){
   }
 
   onPress = () => {
-    this.position.setValue({x: 0, y: 0});
+    this.position.setValue(0);
 
     const myAnimation = Animated.timing(this.position, {
       toValue: 100,
-      duration: 2000
+      duration: 2000,
+      easing: Easing.elastic(5)
     });
 
     myAnimation.start();
@@ -34,7 +35,7 @@ export default class App extends Component{
     return (
       <SafeAreaView style={styles.container}>
         <Animated.Text onPress={this.onPress}
-          style={[styles.viewContainer, {left: this.position.x, top: this.position.y}]} >
+          style={[styles.viewContainer, {left: this.position}]} >
               TreinaWeb
             </Animated.Text>
       </SafeAreaView>

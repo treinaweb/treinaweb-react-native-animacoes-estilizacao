@@ -19,9 +19,8 @@ export default class App extends Component{
     this.position.setValue(0);
 
     const myAnimation = Animated.timing(this.position, {
-      toValue: 100,
-      duration: 2000,
-      easing: Easing.elastic(5)
+      toValue: 1,
+      duration: 2000
     });
 
     myAnimation.start();
@@ -32,10 +31,15 @@ export default class App extends Component{
 
     const {size} = this.state;
 
+    const myLeftAnimation = this.position.interpolate({
+      inputRange: [0, .20, .70, .90, 1],
+      outputRange: [0, 100, 50, 80, 0]
+    })
+
     return (
       <SafeAreaView style={styles.container}>
         <Animated.Text onPress={this.onPress}
-          style={[styles.viewContainer, {left: this.position}]} >
+          style={[styles.viewContainer, {left: myLeftAnimation}]} >
               TreinaWeb
             </Animated.Text>
       </SafeAreaView>

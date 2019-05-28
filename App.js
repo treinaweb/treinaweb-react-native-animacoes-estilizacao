@@ -9,27 +9,21 @@ export default class App extends Component{
 
   constructor(props){
     super(props);
-    this.x = new Animated.Value(0);
+    this.position = new Animated.ValueXY({x: 0, y: 0});
   }
 
   componentDidMount(){
   }
 
   onPress = () => {
-    //this.x.setValue(0);
+    this.position.setValue({x: 0, y: 0});
 
-    const myAnimation = Animated.timing(this.x, {
+    const myAnimation = Animated.timing(this.position, {
       toValue: 100,
       duration: 2000
     });
 
     myAnimation.start();
-
-    setTimeout(() => {
-      //this.x.stopAnimation(() => {})
-      //myAnimation.stop();
-      this.x.resetAnimation(this.onPress);
-    }, 1000)
   }
 
 
@@ -40,7 +34,7 @@ export default class App extends Component{
     return (
       <SafeAreaView style={styles.container}>
         <Animated.Text onPress={this.onPress}
-          style={[styles.viewContainer, {left: this.x}]} >
+          style={[styles.viewContainer, {left: this.position.x, top: this.position.y}]} >
               TreinaWeb
             </Animated.Text>
       </SafeAreaView>

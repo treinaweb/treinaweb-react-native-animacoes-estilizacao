@@ -1,6 +1,18 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, SafeAreaView, Animated, Easing} from 'react-native';
+import {StyleSheet, Text, View, SafeAreaView, Animated, Switch} from 'react-native';
 import myStyles, {colors} from './styles/mainStyles';
+
+class MyComponent extends Component{
+  render(){
+    return (
+      <View style={this.props.style} >
+        <Text>TreinaWeb</Text>
+      </View>
+    )
+  }
+}
+
+const MyAnimatedComponent = Animated.createAnimatedComponent(MyComponent);
 
 export default class App extends Component{
 
@@ -34,8 +46,11 @@ export default class App extends Component{
 
     return (
       <SafeAreaView style={styles.container}>
+
+        <MyAnimatedComponent style={{left: this.position}} />
+
         <Animated.Text onPress={this.onPress}
-          style={[styles.viewContainer, {left: this.position}]} >
+          style={[styles.viewContainer]} >
               TreinaWeb
             </Animated.Text>
       </SafeAreaView>

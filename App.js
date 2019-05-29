@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, SafeAreaView, Animated, Switch} from 'react-native';
 import myStyles, {colors} from './styles/mainStyles';
-import MyButton from './components/MyButton';
+import MyScroll from './components/MyScroll';
 
 export default class App extends Component{
 
@@ -19,7 +19,7 @@ export default class App extends Component{
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <MyButton onFullPress={() => {console.log('CLIQUE FEITO')}} >Click Me</MyButton>
+        <MyScroll />
       </SafeAreaView>
     );
   }

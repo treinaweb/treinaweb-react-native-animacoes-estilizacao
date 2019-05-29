@@ -30,9 +30,8 @@ export default class App extends Component{
       friction: 1
     });
 
-    Animated.sequence([
+    Animated.stagger(1000, [
       myAnimation,
-      Animated.delay(300),
       myAnimation2
     ]).start();
 

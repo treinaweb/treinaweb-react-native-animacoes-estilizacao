@@ -17,23 +17,24 @@ export default class App extends Component{
   }
 
   onPress = () => {
-    this.position.setValue(0);
+    this.position.setValue(-100);
     this.position2.setValue(0);
 
     const myAnimation = Animated.timing(this.position, {
+      toValue: 0,
+      duration: 200
+    });
+
+    const myAnimation2 = Animated.spring(this.position2, {
       toValue: 100,
-      duration: 2000
+      friction: 1
     });
 
-    const myAnimation2 = Animated.timing(this.position2, {
-      toValue: -100,
-      duration: 2000
-    });
-
-    Animated.parallel([
+    Animated.sequence([
       myAnimation,
       myAnimation2
     ]).start();
+
   }
 
 
@@ -46,11 +47,11 @@ export default class App extends Component{
 
 
         <Animated.Text
-          style={[styles.viewContainer, {left: this.position2}]} >
+          style={[styles.viewContainer, {top: this.position}]} >
               TreinaWeb
             </Animated.Text>
         <Animated.Text onPress={this.onPress}
-          style={[styles.viewContainer, {left: this.position}]} >
+          style={[styles.viewContainer, {top: this.position2}]} >
               TreinaWeb
             </Animated.Text>
       </SafeAreaView>

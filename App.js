@@ -5,6 +5,7 @@ import myStyles, {colors} from './styles/mainStyles';
 export default class App extends Component{
 
   state = {
+    canPress: true
   }
 
   constructor(props){
@@ -17,24 +18,34 @@ export default class App extends Component{
   }
 
   onPress = () => {
-    this.position.setValue(-100);
-    this.position2.setValue(0);
+    if(!this.state.canPress){
+      return false;
+    }
 
-    const myAnimation = Animated.timing(this.position, {
-      toValue: 0,
-      duration: 200
-    });
-
-    const myAnimation2 = Animated.spring(this.position2, {
-      toValue: 100,
-      friction: 1
-    });
-
-    Animated.stagger(1000, [
-      myAnimation,
-      myAnimation2
-    ]).start();
-
+    
+    this.setState({
+      canPress: false
+    }, () => {
+      this.position.setValue(-100);
+      this.position2.setValue(0);
+  
+      const myAnimation = Animated.timing(this.position, {
+        toValue: 0,
+        duration: 200
+      });
+  
+      const myAnimation2 = Animated.spring(this.position2, {
+        toValue: 100,
+        friction: 1
+      });
+  
+      Animated.stagger(1000, [
+        myAnimation,
+        myAnimation2
+      ]).start(() => {
+        this.setState({canPress: true})
+      });
+    })
   }
 
 

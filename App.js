@@ -32,6 +32,7 @@ export default class App extends Component{
 
     Animated.sequence([
       myAnimation,
+      Animated.delay(300),
       myAnimation2
     ]).start();
 

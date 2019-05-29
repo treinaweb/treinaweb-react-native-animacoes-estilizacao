@@ -2,18 +2,6 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, SafeAreaView, Animated, Switch} from 'react-native';
 import myStyles, {colors} from './styles/mainStyles';
 
-class MyComponent extends Component{
-  render(){
-    return (
-      <View style={this.props.style} >
-        <Text>TreinaWeb</Text>
-      </View>
-    )
-  }
-}
-
-const MyAnimatedComponent = Animated.createAnimatedComponent(MyComponent);
-
 export default class App extends Component{
 
   state = {
@@ -22,6 +10,7 @@ export default class App extends Component{
   constructor(props){
     super(props);
     this.position = new Animated.Value(0);
+    this.position2 = new Animated.Value(0);
   }
 
   componentDidMount(){
@@ -29,14 +18,22 @@ export default class App extends Component{
 
   onPress = () => {
     this.position.setValue(0);
+    this.position2.setValue(0);
 
-    const myAnimation = Animated.spring(this.position, {
+    const myAnimation = Animated.timing(this.position, {
       toValue: 100,
-      bounciness: 30,
-      speed: 60
+      duration: 2000
     });
 
-    myAnimation.start();
+    const myAnimation2 = Animated.timing(this.position2, {
+      toValue: -100,
+      duration: 2000
+    });
+
+    Animated.parallel([
+      myAnimation,
+      myAnimation2
+    ]).start();
   }
 
 
@@ -47,10 +44,13 @@ export default class App extends Component{
     return (
       <SafeAreaView style={styles.container}>
 
-        <MyAnimatedComponent style={{left: this.position}} />
 
+        <Animated.Text
+          style={[styles.viewContainer, {left: this.position2}]} >
+              TreinaWeb
+            </Animated.Text>
         <Animated.Text onPress={this.onPress}
-          style={[styles.viewContainer]} >
+          style={[styles.viewContainer, {left: this.position}]} >
               TreinaWeb
             </Animated.Text>
       </SafeAreaView>

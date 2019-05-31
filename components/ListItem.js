@@ -18,16 +18,17 @@ export default class ListItem extends Component{
     }
 
     remove = () => {
-        Animated.timing(this.left, {
-            toValue: 300,
-            duration: 1000,
-            easing: Easing.back(1)
-        }).start();
-
-        Animated.timing(this.opacity, {
-            toValue: 0,
-            duration: 1200
-        }).start(() => {
+        Animated.parallel([
+            Animated.timing(this.left, {
+                toValue: 300,
+                duration: 1000,
+                easing: Easing.back(1)
+            }),
+            Animated.timing(this.opacity, {
+                toValue: 0,
+                duration: 1200
+            })
+        ]).start(() => {
             this.props.onRemove(this.props.item);
         })
     }

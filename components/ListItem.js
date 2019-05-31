@@ -26,11 +26,14 @@ export default class ListItem extends Component{
 
 const styles = StyleSheet.create({
     itemContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
         padding: 5,
         paddingLeft: 15
     },
     itemTitle: {
-
+        flex: 1
     },
     removeButton: {
         padding: 7,

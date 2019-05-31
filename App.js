@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, SafeAreaView, SectionList} from 'react-native';
+import {Platform, StyleSheet, Text, View, SafeAreaView, SectionList, Animated, Dimensions} from 'react-native';
 
 import Intro from './components/Intro';
 import ListItem from './components/ListItem';
 import ListHeader from './components/ListHeader';
 import NewItemDialog from './components/NewItemDialog';
+import DayView from './components/DayView';
 
 export default class App extends Component{
 
@@ -15,6 +16,8 @@ export default class App extends Component{
 
   state = {
     isOpen: false,
+    scrollY: new Animated.Value(0),
+    pageHeight: 100,
     selectedHour: '',
     items: [
       {id:1, title: '00:00', data: []},
@@ -48,6 +51,10 @@ export default class App extends Component{
     this.setState({isOpen: true});
   }
 
+  closeScreen = () => {
+    this.setState({isOpen: false});
+  }
+
   onRemove = (itemToRemove) => {
     const items = this.state.items.map(item => {
       if(itemToRemove.timeId === item.id){
@@ -78,22 +85,34 @@ export default class App extends Component{
     })
   }
 
+  handleScroll = Animated.event([{nativeEvent: {contentOffset: {y: this.state.scrollY}}}])
+
+  onContentSizeChange = (scrollWidth, scrollHeight) => {
+    const {height} = Dimensions.get('screen'),
+      pageHeight = Math.abs(height - scrollHeight - 100);
+    this.setState({pageHeight});
+  }
+
   render() {
     const {state} = this;
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         {state.isOpen ? null : <Intro onOpen={this.onOpen} />}
         
+        <DayView onPress={this.closeScreen} scrollY={state.scrollY} pageHeight={state.pageHeight} />
+
         <SectionList
           keyExtractor={(item) => item.title}
           sections={state.items}
           stickySectionHeadersEnabled={true}
           renderSectionHeader={({section}) => <ListHeader onPress={this.selectHour} item={section} />}
           renderItem={({item}) => <ListItem onRemove={this.onRemove} item={item} />}
+          onScroll={this.handleScroll}
+          onContentSizeChange={this.onContentSizeChange}
         />
 
         <NewItemDialog ref={this.newItemDialog} onNewItem={this.onNewItem} selectedHour={state.selectedHour} />
-      </SafeAreaView>
+      </View>
     );
   }
 }

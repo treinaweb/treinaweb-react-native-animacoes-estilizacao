@@ -36,3 +36,12 @@
 [Download](https://github.com/treinaweb/treinaweb-react-native-animacoes-estilizacao/archive/aula-11-01.zip)    |  aula-11-01     | Reagindo ao Fim de Animações |
 [Download](https://github.com/treinaweb/treinaweb-react-native-animacoes-estilizacao/archive/aula-11-02.zip)    |  aula-11-02     | Observando o valor de animações - addListener |
 [Download](https://github.com/treinaweb/treinaweb-react-native-animacoes-estilizacao/archive/aula-11-03.zip)    |  aula-11-03     | Animações Reagindo ao Scroll - Animated.event |
+[Download](https://github.com/treinaweb/treinaweb-react-native-animacoes-estilizacao/archive/aula-11-04.zip)    |  aula-11-04     | Movendo e Soltando Componentes (Drag ‘n Drop) - PanResponder |
+[Download](https://github.com/treinaweb/treinaweb-react-native-animacoes-estilizacao/archive/projeto-03-01.zip)    |  projeto-03-01     | PROJETO: Texto e Botões  |
+[Download](https://github.com/treinaweb/treinaweb-react-native-animacoes-estilizacao/archive/projeto-04-01.zip)    |  projeto-04-01     | PROJETO: Deixando a tela mais bonita com gradiente  |
+[Download](https://github.com/treinaweb/treinaweb-react-native-animacoes-estilizacao/archive/projeto-05-01.zip)    |  projeto-05-01     | PROJETO: Posicionando Elementos  |
+[Download](https://github.com/treinaweb/treinaweb-react-native-animacoes-estilizacao/archive/projeto-06-01.zip)    |  projeto-06-01     | PROJETO: Transformando a posição e rotação da tela  |
+[Download](https://github.com/treinaweb/treinaweb-react-native-animacoes-estilizacao/archive/projeto-07-01.zip)    |  projeto-07-01     | PROJETO: Preparando o layout do aplicativo  |
+[Download](https://github.com/treinaweb/treinaweb-react-native-animacoes-estilizacao/archive/projeto-09-01.zip)    |  projeto-09-01     | PROJETO: Ajustando a animação da tela inicial  |
+[Download](https://github.com/treinaweb/treinaweb-react-native-animacoes-estilizacao/archive/projeto-10-01.zip)    |  projeto-10-01     | PROJETO: Paralelizando Animações  |
+[Download](https://github.com/treinaweb/treinaweb-react-native-animacoes-estilizacao/archive/projeto-11-01.zip)    |  projeto-11-01     | PROJETO: Reagindo a Eventos  |

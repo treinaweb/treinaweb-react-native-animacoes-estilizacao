@@ -35,7 +35,7 @@ export default class NewItemDialog extends Component{
                 <Dialog.Title>New Task - {props.selectedHour.title}</Dialog.Title>
                 <Dialog.Input value={state.text} onChangeText={(text) => this.setState({text})} />
                 <Dialog.Button label="Cancel" onPress={this.close} />
-                <Dialog.Button label="Add" />
+                <Dialog.Button label="Add" onPress={this.addItem} />
             </Dialog.Container>
         )
     }

@@ -48,8 +48,26 @@ export default class App extends Component{
     this.setState({isOpen: true});
   }
 
-  onNewItem = (itemTitle) => {
+  onRemove = (itemToRemove) => {
+    const items = this.state.items.map(item => {
+      if(itemToRemove.timeId === item.id){
+        item.data = item.data.filter(item => item.title !== itemToRemove.title)
+      }
+      return item;
+    });
+    this.setState({items});
+  }
 
+  onNewItem = (itemTitle) => {
+    const selectedHour = this.state.selectedHour,
+      newItem = {timeId: selectedHour.id, title: itemTitle},
+      items = this.state.items.map(item => {
+        if(selectedHour.id === item.id){
+          item.data = [...item.data, newItem];
+        }
+        return item;
+      });
+      this.setState({items});
   }
 
   selectHour = (selectedHour) => {
@@ -64,14 +82,14 @@ export default class App extends Component{
     const {state} = this;
     return (
       <SafeAreaView style={styles.container}>
-        {/*state.isOpen ? null : <Intro onOpen={this.onOpen} />*/}
+        {state.isOpen ? null : <Intro onOpen={this.onOpen} />}
         
         <SectionList
           keyExtractor={(item) => item.title}
           sections={state.items}
           stickySectionHeadersEnabled={true}
           renderSectionHeader={({section}) => <ListHeader onPress={this.selectHour} item={section} />}
-          renderItem={({item}) => <ListItem item={item} />}
+          renderItem={({item}) => <ListItem onRemove={this.onRemove} item={item} />}
         />
 
         <NewItemDialog ref={this.newItemDialog} onNewItem={this.onNewItem} selectedHour={state.selectedHour} />

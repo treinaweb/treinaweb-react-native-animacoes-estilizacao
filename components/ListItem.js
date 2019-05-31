@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableHighlight, StyleSheet} from 'react-native';
+import {View, Text, TouchableHighlight, StyleSheet, Animated, Easing} from 'react-native';
 
 import {colors} from '../styles/Styles';
 
@@ -7,19 +7,41 @@ import {colors} from '../styles/Styles';
 export default class ListItem extends Component{
 
     static defaultProps = {
-        item: {timeId: 0, title: ''}
+        item: {timeId: 0, title: ''},
+        onRemove: () => {}
+    }
+
+    constructor(props){
+        super(props);
+        this.left = new Animated.Value(0);
+        this.opacity = new Animated.Value(1);
+    }
+
+    remove = () => {
+        Animated.timing(this.left, {
+            toValue: 300,
+            duration: 1000,
+            easing: Easing.back(1)
+        }).start();
+
+        Animated.timing(this.opacity, {
+            toValue: 0,
+            duration: 1200
+        }).start(() => {
+            this.props.onRemove(this.props.item);
+        })
     }
 
     render(){
         const {props} = this,
             {item} = props;
         return (
-            <View style={[styles.itemContainer]} >
+            <Animated.View style={[styles.itemContainer, {left: this.left, opacity: this.opacity}]} >
                 <Text style={[styles.itemTitle]} >{item.title}</Text>
-                <TouchableHighlight>
+                <TouchableHighlight onPress={this.remove} >
                     <Text style={[styles.removeButton]} >X</Text>
                 </TouchableHighlight>
-            </View>
+            </Animated.View>
         );
     }
 }

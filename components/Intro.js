@@ -16,10 +16,11 @@ export default class Intro extends Component{
 
 const styles = StyleSheet.create({
     container: {
-        height: 300,
+        ...StyleSheet.absoluteFill,
         zIndex: 200
     },
     timeContainer: {
+        top: '40%',
         backgroundColor: 'rgba(0, 0, 0, .3)',
         paddingTop: 15,
         paddingLeft: 15,

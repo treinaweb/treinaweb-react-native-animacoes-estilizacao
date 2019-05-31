@@ -5,10 +5,21 @@ import Intro from './components/Intro';
 import ListItem from './components/ListItem';
 
 export default class App extends Component{
+
+  state = {
+    isOpen: false
+  }
+
+  onOpen = () => {
+    this.setState({isOpen: true});
+  }
+
   render() {
+    const {state} = this;
     return (
       <SafeAreaView style={styles.container}>
-        <Intro />
+        {/*state.isOpen ? null : <Intro onOpen={this.onOpen} />*/}
+        
 
         <ListItem item={{timeId: 1, title: 'Acordar'}} />
       </SafeAreaView>

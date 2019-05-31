@@ -1,21 +1,22 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableHighlight, StyleSheet} from 'react-native';
-
+import LinearGradient from 'react-native-linear-gradient';
 
 export default class Intro extends Component{
     render(){
         return (
-            <View style={[styles.container]} >
+            <LinearGradient colors={['#146fa0', '#71c5df']}  style={[styles.container]} >
                 <TouchableHighlight style={[styles.timeContainer]} >
                     <Text style={styles.time} >09:41</Text>
                 </TouchableHighlight>
-            </View>
+            </LinearGradient>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
+        height: 300,
         zIndex: 200
     },
     timeContainer: {

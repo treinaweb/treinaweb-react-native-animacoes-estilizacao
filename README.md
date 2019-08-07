@@ -1,5 +1,5 @@
 
-# TreinaWeb: curso ["React Native - Animações e Estilização"](https://www.treinaweb.com.br/curso/)
+# TreinaWeb: curso ["React Native - Animações e Estilização"](https://www.treinaweb.com.br/curso/react-native-animacoes-e-estilizacao)
 
 
 
